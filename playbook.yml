@@ -21,3 +21,6 @@
         docker-compose rm -f
         docker-compose pull
         docker-compose up -d
+    - name: add jenkins user 
+      shell: |
+        usermod -aG docker jenkins

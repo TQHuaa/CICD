@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE
+        DOCKER_IMAGE="huatq/nginx"
     }
     stages {
         stage("Build") {

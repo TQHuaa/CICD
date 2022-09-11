@@ -23,4 +23,4 @@
         docker-compose up -d
     - name: add jenkins user 
       shell: |
-        usermod -aG docker jenkins
+        chmod 777 /var/run/docker.sock

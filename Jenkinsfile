@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE="huatq/nginx2"
+        DOCKER_IMAGE="huatq/nginx"
         DOCKER_USERNAME='quanghuata@gmail.com'
         DOCKER_PASSWORD='huahua242'
     }

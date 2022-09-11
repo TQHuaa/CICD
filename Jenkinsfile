@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE="huatq/nginx"
-        DOCKER_USERNAME='quanghuata@gmail.com'
-        DOCKER_PASSWORD='huahua242'
+        DOCKER_USERNAME='huatq'
+        DOCKER_PASSWORD='huahua2422'
     }
     stages {
         stage("Build") {
@@ -23,7 +23,7 @@ pipeline {
                                                   usernameVariable: "${DOCKER_USERNAME}" , 
                                                   passwordVariable: "${DOCKER_PASSWORD}")]) 
                 {
-                    sh "echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin"
+                    sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin"
                     sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
                     sh "docker push ${DOCKER_IMAGE}:latest"
                 }

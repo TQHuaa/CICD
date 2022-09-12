@@ -13,8 +13,8 @@
       shell: docker login -u "{{DOCKER_USERNAME}}" -p "{{DOCKER_PASSWORD}}"
     - name: Copy file
       copy:
-      src: docker-compose.yaml
-      dest: /home/ubuntu/
+        src: docker-compose.yaml
+        dest: /home/ubuntu/
     - name: Restart docker-compose
       shell: |
         docker-compose stop

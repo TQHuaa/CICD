@@ -2,6 +2,7 @@
 - hosts: server
   remote_user: ubuntu
   become: yes
+  become_user: root
   tasks:
     - name: Install aptitude
       apt:

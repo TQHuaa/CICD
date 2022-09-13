@@ -30,7 +30,7 @@ pipeline {
                 sh "docker image rm ${DOCKER_IMAGE}:latest"
             }
         }
-        stage("Deploy") {
+        stage("Deploy_master") {
             when {
                 branch 'master';
             }
@@ -56,7 +56,7 @@ pipeline {
             }
         }
 
-        stage("Deploy") {
+        stage("Deploy_dev") {
             when {
                 branch 'developer';
             }

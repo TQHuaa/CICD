@@ -31,9 +31,6 @@ pipeline {
             }
         }
         stage("Deploy_master") {
-            when {
-                branch 'master';
-            }
             options {
                 timeout(time: 10, unit: 'MINUTES')
             }

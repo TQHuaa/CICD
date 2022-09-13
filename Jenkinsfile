@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE="huatq/nginx"
-        DOCKER_USERNAME='huatq'
-        DOCKER_PASSWORD='huahua2422'
+        DOCKER_USERNAME='*****'
+        DOCKER_PASSWORD='*****'
     }
     stages {
         stage("Build") {

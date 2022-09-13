@@ -32,7 +32,7 @@ pipeline {
         }
       
 
-        stage("Deploy") {     
+        stage("Deploy_dev") {     
             options {
                 timeout(time: 10, unit: 'MINUTES')
             }

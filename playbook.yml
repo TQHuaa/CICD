@@ -1,5 +1,5 @@
 
-- hosts: server
+- hosts: server-{{BRANCH}}
   remote_user: ubuntu
   become: yes
   become_user: root

@@ -48,7 +48,7 @@ pipeline {
                         extraVars: [
                             DOCKER_USERNAME: "${DOCKER_USERNAME}",
                             DOCKER_PASSWORD: "${DOCKER_PASSWORD}",
-                            BRANCH: "${GIT_BRANCH}"
+                            BRANCH: "${GIT_BRANCH.tokenize('/').pop()}"
                         ]
                     )
                 }

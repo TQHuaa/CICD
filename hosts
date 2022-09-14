@@ -1,4 +1,4 @@
 [server-developer]
 16.163.98.133 ansible_user=ubuntu ansible_python_interpreter='/usr/bin/env python3' ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 [server-master]
-16.162.32.213 ansible_user=ubuntu ansible_python_interpreter='/usr/bin/env python3' ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+18.166.208.243 ansible_user=ubuntu ansible_python_interpreter='/usr/bin/env python3' ansible_ssh_extra_args='-o StrictHostKeyChecking=no'

@@ -9,7 +9,7 @@ pipeline {
                 timeout(time: 10, unit: 'MINUTES')
             }
             environment {
-                DOCKER_TAG = "${GIT_BRANCH.tokenize('/')[-1]}-${GIT_COMMIT.substring(0,7)}"
+                DOCKER_TAG = "${GIT_BRANCH.tokenize('/').pop(1)}-${GIT_COMMIT.substring(0,7)}"
             }
             steps {
                 sh '''

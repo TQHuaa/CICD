@@ -30,9 +30,12 @@ pipeline {
                 sh "docker image rm ${DOCKER_IMAGE}:latest"
             }
         }
-      
-
-        stage("Deploy_dev") {     
+        
+        stage("Deploy") {
+            when {
+                branch 'master';
+                branch 'developer';
+            }
             options {
                 timeout(time: 10, unit: 'MINUTES')
             }
@@ -48,13 +51,13 @@ pipeline {
                         become: 'yes',
                         extraVars: [
                             DOCKER_USERNAME: "${DOCKER_USERNAME}",
-                            DOCKER_PASSWORD: "${DOCKER_PASSWORD}"
+                            DOCKER_PASSWORD: "${DOCKER_PASSWORD}",
+                            BRANCH: "${GIT_BRANCH}"
                         ]
                     )
                 }
             }
         }
-
     }
     post {
         success {

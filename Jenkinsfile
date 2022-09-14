@@ -9,7 +9,7 @@ pipeline {
                 timeout(time: 10, unit: 'MINUTES')
             }
             environment {
-                DOCKER_TAG = "${GIT_BRANCH.tokenize('/').get(1)}-${GIT_COMMIT.substring(0,7)}"
+                DOCKER_TAG = "${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
             }
             steps {
                 sh '''
@@ -48,7 +48,7 @@ pipeline {
                         extraVars: [
                             DOCKER_USERNAME: "${DOCKER_USERNAME}",
                             DOCKER_PASSWORD: "${DOCKER_PASSWORD}",
-                            BRANCH: "${GIT_BRANCH}"
+                            BRANCH: "${GIT_BRANCH.tokenize('/').[-1]}"
                         ]
                     )
                 }

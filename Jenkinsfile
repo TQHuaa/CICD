@@ -31,6 +31,9 @@ pipeline {
             }
         }
         stage("Deploy_master") {
+            when {
+                branch 'master';
+            }
             options {
                 timeout(time: 10, unit: 'MINUTES')
             }
@@ -42,7 +45,7 @@ pipeline {
                     ansiblePlaybook(
                         credentialsId: 'private_key',
                         playbook: 'playbook.yml',
-                        inventory: 'hosts',
+                        inventory: 'hosts_master',
                         become: 'yes',
                         extraVars: [
                             DOCKER_USERNAME: "${DOCKER_USERNAME}",
@@ -53,7 +56,31 @@ pipeline {
             }
         }
 
-       
+        stage("Deploy_dev") {
+            when {
+                branch 'developer';
+            }
+            options {
+                timeout(time: 10, unit: 'MINUTES')
+            }
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', 
+                                                  usernameVariable: 'DOCKER_USERNAME', 
+                                                  passwordVariable: 'DOCKER_PASSWORD')]) 
+                {
+                    ansiblePlaybook(
+                        credentialsId: 'private_key',
+                        playbook: 'playbook.yml',
+                        inventory: 'hosts_dev',
+                        become: 'yes',
+                        extraVars: [
+                            DOCKER_USERNAME: "${DOCKER_USERNAME}",
+                            DOCKER_PASSWORD: "${DOCKER_PASSWORD}"
+                        ]
+                    )
+                }
+            }
+        }
 
     }
     post {
